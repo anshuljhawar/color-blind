@@ -4,16 +4,16 @@ using System;
 
 public class LevelColorScript {
 
-	private static int UPPER_LIMIT = 200;
+	private static float UPPER_LIMIT = 100;
 
 	public static Color GetLevelColor(){
 
 		System.Random random = new System.Random();
-		int red = random.Next(255);
-		int green = random.Next(255);
-		int blue = random.Next(255);
+		float red = 100 + random.Next(155);
+		float green = 100 + random.Next(155);
+		float blue = 100 + random.Next(155);
 
-		Color color = new Color (red, green, blue);
+		Color color = new Color (red/255, green/255, blue/255);
 
 		return color;
 	}
@@ -23,23 +23,26 @@ public class LevelColorScript {
 		Color levelSecondColor = new Color (levelColor.r, levelColor.g, levelColor.b);
 
 		System.Random random = new System.Random ();
-		int colorToModify = random.Next (3);
+		int colorToModify = random.Next (2);
 
 		switch (colorToModify) {
 		case 0:
-			levelSecondColor.r = levelColor.r - (UPPER_LIMIT - level);
+			levelSecondColor.r = ChangeColorComponent(level, levelColor.r);
 			break;
 		case 1:
-			levelSecondColor.g = levelColor.g - (UPPER_LIMIT - level);
+			levelSecondColor.g = ChangeColorComponent(level, levelColor.g);
 			break;
 		case 2:
-			levelSecondColor.b = levelColor.b - (UPPER_LIMIT - level);
-			break;
-		case 3:
+			levelSecondColor.b = ChangeColorComponent(level, levelColor.b);
 			break;
 		}
 
 		return levelSecondColor;
+	}
+
+	private static float ChangeColorComponent(int level, float colorComponent){
+		float temp = colorComponent - (UPPER_LIMIT - level * 2)/255;
+		return temp > 0 ? temp : 0;
 	}
 
 }

@@ -8,9 +8,9 @@ public class Manager : MonoBehaviour {
 	public Text Timer;
 	
 	private int level = 4;
-
-	[HideInInspector]
+	
 	public Color levelColor = Color.red;
+	public Color levelSecondColor;
 	
 	private int score = 0;
 	private int timer = 30;
@@ -51,14 +51,14 @@ public class Manager : MonoBehaviour {
 		//Clear the layout 
 		int childs = this.gridLayoutGroup.transform.childCount;
 		
-		for (int i = childs - 1; i > 0; i--)
+		for (int i = childs - 1; i >= 0; i--)
 		{
 			GameObject.Destroy(this.gridLayoutGroup.transform.GetChild(i).gameObject);
 		}
 
 		//Get color for levels
 		this.levelColor = LevelColorScript.GetLevelColor ();
-		Color levelSecondColor = LevelColorScript.GetLevelSecondColor (level, levelColor);
+		this.levelSecondColor = LevelColorScript.GetLevelSecondColor (level, levelColor);
 
 		int gridSize = level > MAX_GRID_SIZE ? MAX_GRID_SIZE : level;
 
@@ -75,12 +75,12 @@ public class Manager : MonoBehaviour {
 		for(int i =0; i < gridSize * gridSize ; i++){
 			GameObject gridItem = (GameObject) GameObject.Instantiate(gridItemPrefab);
 
+			gridItem.GetComponent<RectTransform>().SetParent(this.gridLayoutGroup.transform);
+
 			if(i == secondColorGridItemPosition)
 				gridItem.GetComponent<Image>().color = levelSecondColor;
 			else
 				gridItem.GetComponent<Image>().color = levelColor;
-
-			gridItem.GetComponent<RectTransform>().SetParent(this.gridLayoutGroup.transform);
 		}
 	}
 
