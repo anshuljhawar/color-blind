@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -15,7 +15,7 @@ public class GridItem : MonoBehaviour {
 			return;
 		Image image = this.gameObject.GetComponent <Image>();
 
-		if(!image.color.Equals(manager.color)){
+		if(!image.color.Equals(manager.levelColor)){
 			manager.LevelUp();
 		}
 	}

@@ -4,9 +4,9 @@ using System;
 
 public class LevelColorScript {
 
-	int UPPER_LIMIT = 200;
+	private static int UPPER_LIMIT = 200;
 
-	private Color GetLevelColor(){
+	public static Color GetLevelColor(){
 
 		System.Random random = new System.Random();
 		int red = random.Next(255);
@@ -18,7 +18,7 @@ public class LevelColorScript {
 		return color;
 	}
 
-	private Color GetLevelSecondColor(int level, Color levelColor ){
+	public static Color GetLevelSecondColor(int level, Color levelColor ){
 
 		Color levelSecondColor = new Color (levelColor.r, levelColor.g, levelColor.b);
 
