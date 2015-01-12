@@ -13,18 +13,17 @@ public class Manager : MonoBehaviour {
 	public Color levelColor = Color.red;
 	
 	private int score = 0;
-	private int timer = 30;
+	private float timer = 0;
 
 	public GridLayoutGroup gridLayoutGroup;
 	public GameObject gridItemPrefab;
 
-	private float startTime, currentTime;
-
+	private int MAX_TIMER = 30;
 	private int MAX_GRID_SIZE = 8;
 	private int GRID_PANEL_SIZE;
 
 	void Start () {
-		startTime = Time.time;
+		timer = MAX_TIMER;
 		Score.text = ""+score;
 		Timer.text = ""+timer;
 
@@ -34,13 +33,13 @@ public class Manager : MonoBehaviour {
 	}
 
 	void Update () {
-		currentTime = Time.time - startTime;
-		timer = Mathf.CeilToInt(timer - currentTime);
+		timer -= Time.deltaTime;
 		if(timer <=0){
+			Timer.text = "Time UP!!";
 			//End Game
 		} 
 		else
-			Timer.text = ""+timer;
+			Timer.text = ""+Mathf.CeilToInt(timer);
 
 	}
 
@@ -51,7 +50,7 @@ public class Manager : MonoBehaviour {
 		//Clear the layout 
 		int childs = this.gridLayoutGroup.transform.childCount;
 		
-		for (int i = childs - 1; i > 0; i--)
+		for (int i = childs - 1; i >= 0; i--)
 		{
 			GameObject.Destroy(this.gridLayoutGroup.transform.GetChild(i).gameObject);
 		}
@@ -87,7 +86,7 @@ public class Manager : MonoBehaviour {
 	public void LevelUp(){
 		level++;
 		score++;
-		timer = 30;
+		timer = MAX_TIMER;
 		Score.text = ""+score;
 		Timer.text = ""+timer;
 		RecreateGrid(level);

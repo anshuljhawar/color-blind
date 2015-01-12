@@ -23,7 +23,7 @@ public class LevelColorScript {
 		Color levelSecondColor = new Color (levelColor.r, levelColor.g, levelColor.b);
 
 		System.Random random = new System.Random ();
-		int colorToModify = random.Next (3);
+		int colorToModify = random.Next (2);
 
 		switch (colorToModify) {
 		case 0:
@@ -34,8 +34,6 @@ public class LevelColorScript {
 			break;
 		case 2:
 			levelSecondColor.b = levelColor.b - (UPPER_LIMIT - level);
-			break;
-		case 3:
 			break;
 		}
 
