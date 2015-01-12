@@ -21,27 +21,19 @@ public class LevelColorScript {
 	public static Color GetLevelSecondColor(int level, Color levelColor ){
 
 		Color levelSecondColor = new Color (levelColor.r, levelColor.g, levelColor.b);
-
-		System.Random random = new System.Random ();
-		int colorToModify = random.Next (2);
-
-		switch (colorToModify) {
-		case 0:
+		float max = Mathf.Min(levelColor.r,levelColor.g,levelColor.b);
+		if(max == levelColor.r)
 			levelSecondColor.r = ChangeColorComponent(level, levelColor.r);
-			break;
-		case 1:
+		else if( max == levelColor.g)
 			levelSecondColor.g = ChangeColorComponent(level, levelColor.g);
-			break;
-		case 2:
+		else
 			levelSecondColor.b = ChangeColorComponent(level, levelColor.b);
-			break;
-		}
 
 		return levelSecondColor;
 	}
 
 	private static float ChangeColorComponent(int level, float colorComponent){
-		float temp = colorComponent - (UPPER_LIMIT - level * 2)/255;
+		float temp = colorComponent - (UPPER_LIMIT - level)/255;
 		return temp > 0 ? temp : 0;
 	}
 
