@@ -18,7 +18,7 @@ public class Manager : MonoBehaviour {
 	public GridLayoutGroup gridLayoutGroup;
 	public GameObject gridItemPrefab;
 
-	private int MAX_TIMER = 10;
+	private int MAX_TIMER = 45;
 	private int MAX_GRID_SIZE = 8;
 	private float GRID_PANEL_SIZE;
 
@@ -38,6 +38,10 @@ public class Manager : MonoBehaviour {
 	}
 
 	void Update () {
+
+		if (Input.GetKeyDown(KeyCode.Escape)) 
+			Application.Quit(); 
+
 		timer -= Time.deltaTime;
 		if(timer <=0){
 			Timer.text = "Time UP!!";

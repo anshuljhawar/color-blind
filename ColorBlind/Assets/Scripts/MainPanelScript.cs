@@ -16,6 +16,11 @@ public class MainPanelScript : MonoBehaviour {
 		this.HighScore.text = "HighScore: " + highScore;
 	}
 
+	void Update(){
+		if (Input.GetKeyDown(KeyCode.Escape)) 
+			Application.Quit(); 
+	}
+
 	public void UpdateScore(int score){
 		this.Score.text = "Score: " + score;
 		if (score > highScore)
