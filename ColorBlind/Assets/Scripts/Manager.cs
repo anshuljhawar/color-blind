@@ -25,6 +25,7 @@ public class Manager : MonoBehaviour {
 	public MainPanelScript mainPanel;
 
 	void Start () {
+		this.gridLayoutGroup.GetComponent<RectTransform> ().rect.Set (0, 0, Screen.width-60, Screen.width-60);
 		GRID_PANEL_SIZE = this.gridLayoutGroup.GetComponent<RectTransform> ().rect.width;
 	}
 
