@@ -6,14 +6,14 @@ public class Manager : MonoBehaviour {
 
 	public Text Score;
 	public Text Timer;
-	[HideInInspector]
-	public int level = 4;
+	
+	private int level = 4;
+
 	[HideInInspector]
 	public Color levelColor = Color.red;
-	[HideInInspector]
-	public int score = 0;
-	[HideInInspector]
-	public int timer = 30;
+	
+	private int score = 0;
+	private int timer = 30;
 
 	public GridLayoutGroup gridLayoutGroup;
 	public GameObject gridItemPrefab;
@@ -47,6 +47,14 @@ public class Manager : MonoBehaviour {
 	void RecreateGrid(int level){
 		//Recreate level x level grid
 		//Change color
+
+		//Clear the layout 
+		int childs = this.gridLayoutGroup.transform.childCount;
+		
+		for (int i = childs - 1; i > 0; i--)
+		{
+			GameObject.Destroy(this.gridLayoutGroup.transform.GetChild(i).gameObject);
+		}
 
 		//Get color for levels
 		this.levelColor = LevelColorScript.GetLevelColor ();

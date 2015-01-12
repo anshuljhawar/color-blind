@@ -11,8 +11,7 @@ public class GridItem : MonoBehaviour {
 	}
 
 	public void ButtonClick(){
-		if(manager.timer <=0)
-			return;
+
 		Image image = this.gameObject.GetComponent <Image>();
 
 		if(!image.color.Equals(manager.levelColor)){
