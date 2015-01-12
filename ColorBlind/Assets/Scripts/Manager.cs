@@ -18,7 +18,7 @@ public class Manager : MonoBehaviour {
 	public GridLayoutGroup gridLayoutGroup;
 	public GameObject gridItemPrefab;
 
-	private int MAX_TIMER = 30;
+	private int MAX_TIMER = 10;
 	private int MAX_GRID_SIZE = 8;
 	private float GRID_PANEL_SIZE;
 
