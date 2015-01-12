@@ -25,7 +25,15 @@ public class Manager : MonoBehaviour {
 	public MainPanelScript mainPanel;
 
 	void Start () {
-		this.gridLayoutGroup.GetComponent<RectTransform> ().rect.Set (0, 0, Screen.width-60, Screen.width-60);
+//		float screenWidth = Screen.width;
+//		float screenHeight = Screen.height;
+//		float panelWidth = this.gridLayoutGroup.GetComponent<RectTransform> ().rect.width / 2;
+//
+//		float left = (screenWidth - this.gridLayoutGroup.GetComponent<RectTransform> ().rect.width) / 2;
+//		float top = (screenHeight - this.gridLayoutGroup.GetComponent<RectTransform> ().rect.width) / 2;
+//
+//		this.gridLayoutGroup.GetComponent<RectTransform>().rect.Set(left, top, panelWidth, panelWidth);
+
 		GRID_PANEL_SIZE = this.gridLayoutGroup.GetComponent<RectTransform> ().rect.width;
 	}
 
@@ -36,7 +44,7 @@ public class Manager : MonoBehaviour {
 			EndGame();
 		} 
 		else
-			Timer.text = ""+Mathf.CeilToInt(timer);
+			Timer.text = "Time Left: "+Mathf.CeilToInt(timer);
 
 	}
 
@@ -84,7 +92,7 @@ public class Manager : MonoBehaviour {
 		level++;
 		score++;
 		Score.text = "Score: "+score;
-		Timer.text = ""+timer;
+		Timer.text = "Time Left: "+timer;
 		RecreateGrid(level);
 	}
 
@@ -93,7 +101,7 @@ public class Manager : MonoBehaviour {
 		score = 0;
 		level = 2;
 		Score.text = "Score: "+score;
-		Timer.text = ""+timer;
+		Timer.text = "Time Left: "+timer;
 		this.RecreateGrid (level);
 	}
 
