@@ -7,7 +7,7 @@ public class Manager : MonoBehaviour {
 	public Text Score;
 	public Text Timer;
 	
-	private int level = 4;
+	private int level = 2;
 	
 	public Color levelColor = Color.red;
 	public Color levelSecondColor;
@@ -22,21 +22,17 @@ public class Manager : MonoBehaviour {
 	private int MAX_GRID_SIZE = 8;
 	private float GRID_PANEL_SIZE;
 
+	public MainPanelScript mainPanel;
+
 	void Start () {
-		timer = MAX_TIMER;
-		Score.text = "Score: "+score;
-		Timer.text = ""+timer;
-
 		GRID_PANEL_SIZE = this.gridLayoutGroup.GetComponent<RectTransform> ().rect.width;
-
-		this.RecreateGrid (level);
 	}
 
 	void Update () {
 		timer -= Time.deltaTime;
 		if(timer <=0){
 			Timer.text = "Time UP!!";
-			//End Game
+			EndGame();
 		} 
 		else
 			Timer.text = ""+Mathf.CeilToInt(timer);
@@ -89,6 +85,21 @@ public class Manager : MonoBehaviour {
 		Score.text = "Score: "+score;
 		Timer.text = ""+timer;
 		RecreateGrid(level);
+	}
+
+	public void ResetGame(){
+		timer = MAX_TIMER;
+		score = 0;
+		level = 2;
+		Score.text = "Score: "+score;
+		Timer.text = ""+timer;
+		this.RecreateGrid (level);
+	}
+
+	private void EndGame(){
+		mainPanel.gameObject.SetActive (true);
+		mainPanel.UpdateScore(score);
+		this.gameObject.SetActive (false);
 	}
 
 }
