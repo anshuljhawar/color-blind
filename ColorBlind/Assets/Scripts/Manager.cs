@@ -20,14 +20,14 @@ public class Manager : MonoBehaviour {
 
 	private int MAX_TIMER = 30;
 	private int MAX_GRID_SIZE = 8;
-	private int GRID_PANEL_SIZE;
+	private float GRID_PANEL_SIZE;
 
 	void Start () {
 		timer = MAX_TIMER;
-		Score.text = ""+score;
+		Score.text = "Score: "+score;
 		Timer.text = ""+timer;
 
-		GRID_PANEL_SIZE = (int)this.gridLayoutGroup.GetComponent<RectTransform> ().rect.width;
+		GRID_PANEL_SIZE = this.gridLayoutGroup.GetComponent<RectTransform> ().rect.width;
 
 		this.RecreateGrid (level);
 	}
@@ -61,12 +61,12 @@ public class Manager : MonoBehaviour {
 
 		int gridSize = level > MAX_GRID_SIZE ? MAX_GRID_SIZE : level;
 
-		int cellSpace = (GRID_PANEL_SIZE - 3 * this.gridLayoutGroup.padding.left);
-		int cellSize = cellSpace / (gridSize);
+		float cellSpace = (GRID_PANEL_SIZE - 3 * this.gridLayoutGroup.padding.left);
+		float cellSize = cellSpace / (gridSize);
 
 		this.gridLayoutGroup.cellSize = new Vector2(cellSize,cellSize);
 
-		this.gridLayoutGroup.spacing = new Vector2(this.gridLayoutGroup.padding.left / (level - 1),this.gridLayoutGroup.padding.left / (level - 1));
+		this.gridLayoutGroup.spacing = new Vector2(((float)this.gridLayoutGroup.padding.left) / (gridSize - 1), ((float)this.gridLayoutGroup.padding.left) / (gridSize - 1));
 	
 		System.Random random = new System.Random ();
 		int secondColorGridItemPosition = random.Next (gridSize * gridSize);
@@ -86,8 +86,7 @@ public class Manager : MonoBehaviour {
 	public void LevelUp(){
 		level++;
 		score++;
-		timer = MAX_TIMER;
-		Score.text = ""+score;
+		Score.text = "Score: "+score;
 		Timer.text = ""+timer;
 		RecreateGrid(level);
 	}
