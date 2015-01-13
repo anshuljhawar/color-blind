@@ -25,13 +25,16 @@ public class MainPanelScript : MonoBehaviour {
 			Application.Quit(); 
 	}
 
-	public void UpdateScore(int score){
+	public bool UpdateScore(int score){
 		this.Score.text = "Score: " + score;
 		if (score > highScore[manager.difficultyLevel.ToString()]){
 			highScore[manager.difficultyLevel.ToString()] = score;
 			PlayerPrefs.SetInt("HighScore"+manager.difficultyLevel.ToString(), highScore[manager.difficultyLevel.ToString()]);
+			this.HighScore.text = "HighScore: " + highScore[manager.difficultyLevel.ToString()];
+			return true;
 		}
 		this.HighScore.text = "HighScore: " + highScore[manager.difficultyLevel.ToString()];
+		return false;
 	}
 
 	public void ShowHighScore(string difficulty){
