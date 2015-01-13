@@ -11,21 +11,29 @@ public class GridItem : MonoBehaviour {
 	private float timer = 0;
 
 	private bool showHint = false;
-	private float hintDuration = 4;
 	private float lerpTime = 0;
+
+	private Color fromColor;
+	private Color toColor;
+	private Color hintColor;
 
 	// Use this for initialization
 	void Start () {
 		manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>();
 		image = this.gameObject.GetComponent <Image>();
 		timer = MAX_HINT_TIMER;
+		hintColor = Color.white;
 	}
 
 	void Update(){
 		if(!image.color.Equals(manager.levelColor)){
 			timer -= Time.deltaTime;
 			if(timer <=0){
-				this.showHint = true;
+				if(this.showHint == false){
+					this.showHint = true;
+					fromColor = image.color;
+					toColor = hintColor;
+				}
 			} 
 		}
 
@@ -41,15 +49,22 @@ public class GridItem : MonoBehaviour {
 	}
 
 	private void ShowHint(){
-//		Debug.LogError ("CAme herererer");
-//		Color color = image.color;
-//		color.r = color.r + 100/255;
-//		image.color = manager.levelColor;
 
-		image.color = Color.Lerp (image.color, manager.levelColor, lerpTime);
+		image.color = Color.Lerp (fromColor, toColor, lerpTime);
 
 		if (lerpTime < 1) {
-			lerpTime += Time.deltaTime/hintDuration;
+			lerpTime += Time.deltaTime;
+		}else{
+			lerpTime = 0;
+			if(fromColor == hintColor){
+				fromColor = manager.levelSecondColor;
+				toColor = hintColor;
+			}else{
+				fromColor = hintColor;
+				toColor = manager.levelSecondColor;
+			}
+
 		}
+
 	}
 }
