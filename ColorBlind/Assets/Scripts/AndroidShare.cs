@@ -20,7 +20,7 @@ public class AndroidShare {
 		
 		if (pluginClass != null) {
 			Debug.Log("plugin class  --> " + " Not Null" );
-			pluginClass.CallStatic("sendText", playerActivityContext, "Sample Text");
+			pluginClass.CallStatic("sendText", playerActivityContext, highScore);
 		}
 		#endif
 	}
@@ -42,7 +42,7 @@ public class AndroidShare {
 		
 		if (pluginClass != null) {
 			Debug.Log("plugin class  --> " + " Not Null" );
-			pluginClass.CallStatic("sendImageWithCaption", playerActivityContext, "/sdcard/color-blind/highscore.png", "Sample Text");
+			pluginClass.CallStatic("sendImageWithCaption", playerActivityContext, "/sdcard/color-blind/highscore.png", highScore);
 		}
 		#endif
 	}
