@@ -16,7 +16,9 @@ public class TimeUpPanelScript : MonoBehaviour {
 		this.gameObject.SetActive(true);
 	}
 	public void ShareButtonClick(){
-		AndroidShare.ShareHighScore("Awesome! I made a new "+HighScore.text+" in Color Blind!");
+		string text = "Awesome! I made a new " + HighScore.text + " in Color Blind!";
+//		AndroidShare.ShareHighScore(text);
+		AndroidShare.ShareScreenShotWithHighScoreDirect (text);
 	}
 
 	public void HomeButtonClick(){
