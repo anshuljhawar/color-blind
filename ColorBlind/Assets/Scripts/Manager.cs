@@ -26,6 +26,7 @@ public class Manager : MonoBehaviour {
 	private float GRID_PANEL_SIZE;
 
 	public MainPanelScript mainPanel;
+	public TimeUpPanelScript timeUpPanel;
 
 	void Start () {
 //		float screenWidth = Screen.width;
@@ -45,13 +46,15 @@ public class Manager : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Escape)) 
 			Application.Quit(); 
 
-		timer -= Time.deltaTime;
-		if(timer <=0){
-			Timer.text = "Time UP!!";
-			EndGame();
-		} 
-		else
-			Timer.text = "Time Left: "+Mathf.CeilToInt(timer);
+		if(timer>0){
+			timer -= Time.deltaTime;
+			if(timer <=0){
+				Timer.text = "Time UP!!";
+				TimeUp();
+			} 
+			else
+				Timer.text = "Time Left: "+Mathf.CeilToInt(timer);
+		}
 
 	}
 
@@ -99,7 +102,6 @@ public class Manager : MonoBehaviour {
 		level++;
 		score++;
 		Score.text = "Score: "+score;
-		Timer.text = "Time Left: "+timer;
 		RecreateGrid(level);
 	}
 
@@ -127,8 +129,13 @@ public class Manager : MonoBehaviour {
 			break;
 		}
 	}
+	public void TimeUp(){
+		timeUpPanel.setPanel(mainPanel.UpdateScore(score));
+		this.gameObject.SetActive (false);
 
-	private void EndGame(){
+	}
+
+	public void EndGame(){
 		mainPanel.gameObject.SetActive (true);
 		mainPanel.UpdateScore(score);
 		this.gameObject.SetActive (false);
