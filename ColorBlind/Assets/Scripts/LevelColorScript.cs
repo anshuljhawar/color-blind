@@ -33,8 +33,10 @@ public class LevelColorScript {
 	}
 
 	private static float ChangeColorComponent(int level, float colorComponent){
-		float temp = colorComponent - (UPPER_LIMIT - level * 2)/255;
-		return temp > 0 ? temp : 0;
+		int levelDiff = (UPPER_LIMIT - level * 2);
+		levelDiff = levelDiff > 4 ? levelDiff : 4;
+		float temp = colorComponent - levelDiff/255;
+		return temp;
 	}
 
 }
