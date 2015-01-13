@@ -18,22 +18,22 @@ public class LevelColorScript {
 		return color;
 	}
 
-	public static Color GetLevelSecondColor(int level, Color levelColor ){
+	public static Color GetLevelSecondColor(int level, int difficulty, Color levelColor ){
 
 		Color levelSecondColor = new Color (levelColor.r, levelColor.g, levelColor.b);
 		float max = Mathf.Min(levelColor.r,levelColor.g,levelColor.b);
 		if(max == levelColor.r)
-			levelSecondColor.r = ChangeColorComponent(level, levelColor.r);
+			levelSecondColor.r = ChangeColorComponent(level, difficulty, levelColor.r);
 		else if( max == levelColor.g)
-			levelSecondColor.g = ChangeColorComponent(level, levelColor.g);
+			levelSecondColor.g = ChangeColorComponent(level, difficulty, levelColor.g);
 		else
-			levelSecondColor.b = ChangeColorComponent(level, levelColor.b);
+			levelSecondColor.b = ChangeColorComponent(level, difficulty, levelColor.b);
 
 		return levelSecondColor;
 	}
 
-	private static float ChangeColorComponent(int level, float colorComponent){
-		int levelDiff = (UPPER_LIMIT - level * 2);
+	private static float ChangeColorComponent(int level, int difficulty, float colorComponent){
+		float levelDiff = (UPPER_LIMIT - (level + difficulty) * 2);
 		levelDiff = levelDiff > 4 ? levelDiff : 4;
 		float temp = colorComponent - levelDiff/255;
 		return temp;

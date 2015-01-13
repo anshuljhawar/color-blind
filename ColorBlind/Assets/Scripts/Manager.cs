@@ -8,6 +8,9 @@ public class Manager : MonoBehaviour {
 	public Text Timer;
 	
 	private int level = 2;
+	[HideInInspector]
+	public ToggleValue.ToggleValues difficultyLevel = ToggleValue.ToggleValues.Easy;
+	private int difficulty = 0;
 	
 	public Color levelColor = Color.red;
 	public Color levelSecondColor;
@@ -18,7 +21,7 @@ public class Manager : MonoBehaviour {
 	public GridLayoutGroup gridLayoutGroup;
 	public GameObject gridItemPrefab;
 
-	private int MAX_TIMER = 45;
+	public int MAX_TIMER = 45;
 	private int MAX_GRID_SIZE = 8;
 	private float GRID_PANEL_SIZE;
 
@@ -66,7 +69,7 @@ public class Manager : MonoBehaviour {
 
 		//Get color for levels
 		this.levelColor = LevelColorScript.GetLevelColor ();
-		this.levelSecondColor = LevelColorScript.GetLevelSecondColor (level, levelColor);
+		this.levelSecondColor = LevelColorScript.GetLevelSecondColor (level,difficulty, levelColor);
 
 		int gridSize = level > MAX_GRID_SIZE ? MAX_GRID_SIZE : level;
 
@@ -107,6 +110,22 @@ public class Manager : MonoBehaviour {
 		Score.text = "Score: "+score;
 		Timer.text = "Time Left: "+timer;
 		this.RecreateGrid (level);
+	}
+
+	public void SetDifficultyLevel(ToggleValue.ToggleValues value){
+		difficultyLevel = value;
+		mainPanel.ShowHighScore(difficultyLevel.ToString());
+		switch(difficultyLevel){
+		case ToggleValue.ToggleValues.Hard:
+			difficulty = 30;
+			break;
+		case ToggleValue.ToggleValues.Medium:
+			difficulty = 15;
+			break;
+		default:
+			difficulty = 0;
+			break;
+		}
 	}
 
 	private void EndGame(){
