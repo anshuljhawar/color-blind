@@ -34,7 +34,7 @@ public class LevelColorScript {
 
 	private static float ChangeColorComponent(int level, int difficulty, float colorComponent){
 		float levelDiff = (UPPER_LIMIT - (level + difficulty) * 2);
-		levelDiff = levelDiff > 4 ? levelDiff : 4;
+		levelDiff = levelDiff > 10 ? levelDiff : 10;
 		float temp = colorComponent - levelDiff/255;
 		return temp;
 	}
