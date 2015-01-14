@@ -10,6 +10,11 @@ public class TimeUpPanelScript : MonoBehaviour {
 	public GameObject newHighScore;
 	public Manager manager;
 
+	void Update(){
+		if (Input.GetKeyDown(KeyCode.Escape)) 
+			this.HomeButtonClick();
+	}
+
 	public void setPanel(bool showShare){
 		Score.text = manager.mainPanel.Score.text;
 		HighScore.text = manager.mainPanel.HighScore.text;

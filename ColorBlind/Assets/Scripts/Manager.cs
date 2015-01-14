@@ -43,9 +43,10 @@ public class Manager : MonoBehaviour {
 
 	void Update () {
 
-		if (Input.GetKeyDown(KeyCode.Escape)) 
-			Application.Quit(); 
-
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			this.EndGame();
+		}
+			
 		if(timer>0){
 			timer -= Time.deltaTime;
 			if(timer <=0){
