@@ -88,8 +88,9 @@ public class Manager : MonoBehaviour {
 
 		for(int i =0; i < gridSize * gridSize ; i++){
 			GameObject gridItem = (GameObject) GameObject.Instantiate(gridItemPrefab);
-
-			gridItem.GetComponent<RectTransform>().SetParent(this.gridLayoutGroup.transform);
+			RectTransform t = gridItem.GetComponent<RectTransform>();
+			t.SetParent(this.gridLayoutGroup.transform);
+			t.localScale = Vector3.one;
 
 			if(i == secondColorGridItemPosition)
 				gridItem.GetComponent<Image>().color = levelSecondColor;
