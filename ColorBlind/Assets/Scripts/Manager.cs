@@ -6,6 +6,8 @@ public class Manager : MonoBehaviour {
 
 	public Text Score;
 	public Text Timer;
+
+	public Text Instruction;
 	
 	private int level = 2;
 	[HideInInspector]
@@ -104,6 +106,9 @@ public class Manager : MonoBehaviour {
 		level++;
 		score++;
 		Score.text = "Score: "+score;
+
+		Instruction.gameObject.SetActive (false);
+
 		RecreateGrid(level);
 	}
 
