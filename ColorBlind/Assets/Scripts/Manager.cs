@@ -132,7 +132,7 @@ public class Manager : MonoBehaviour {
 		}
 	}
 	public void TimeUp(){
-		timeUpPanel.setPanel(mainPanel.UpdateScore(score));
+		timeUpPanel.SetPanel(mainPanel.UpdateScore(score));
 		this.gameObject.SetActive (false);
 
 	}
