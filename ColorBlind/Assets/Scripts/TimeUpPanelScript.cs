@@ -34,5 +34,10 @@ public class TimeUpPanelScript : MonoBehaviour {
 		manager.EndGame();
 	}
 
+	public void SwitchToGame(){
+		manager.ResetGame ();
+		manager.gameObject.SetActive (true);
+		this.gameObject.SetActive (false);
+	}
 
 }
