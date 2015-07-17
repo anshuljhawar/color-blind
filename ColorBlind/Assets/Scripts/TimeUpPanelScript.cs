@@ -24,7 +24,7 @@ public class TimeUpPanelScript : MonoBehaviour {
 	}
 	public void ShareButtonClick(){
 		string text = "Awesome! I made a new " + HighScore.text + " in Color Blind!";
-		text = text + " Check this out https://www.dropbox.com/s/oa1a2es8yys1c6m/colorblind.apk?dl=0";
+		text = text + " Check this out https://play.google.com/store/apps/details?id=com.pranjh.colorblind";
 //		AndroidShare.ShareHighScore(text);
 		AndroidShare.ShareScreenShotWithHighScoreDirect (text);
 	}

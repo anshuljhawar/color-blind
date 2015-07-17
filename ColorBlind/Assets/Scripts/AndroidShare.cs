@@ -4,7 +4,9 @@ using System.IO;
 
 public class AndroidShare {
 
+	#if UNITY_ANDROID
 	private static AndroidJavaObject playerActivityContext = null;
+	#endif
 
 	public static void ShareHighScore (string highScore){
 		#if UNITY_ANDROID && !UNITY_EDITOR
@@ -26,6 +28,8 @@ public class AndroidShare {
 	}
 
 	public static void ShareScreenShotWithHighScoreDirect(string highscore){
+
+		#if UNITY_ANDROID
 
 		// create the texture
 		Texture2D screenTexture = new Texture2D(Screen.width, Screen.height,TextureFormat.RGB24,true);
@@ -70,6 +74,8 @@ public class AndroidShare {
 			// block to open the file and share it ------------END
 			
 		}
+
+		#endif
 	}
 
 	public static void ShareScreenShotWithHighScore (string highScore){

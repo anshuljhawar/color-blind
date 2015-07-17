@@ -75,7 +75,7 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 		#if UNITY_EDITOR
 		string adUnitId = "unused";
 		#elif UNITY_ANDROID
-		string adUnitId = "ca-app-pub-8895998425457169/7223367738";
+		string adUnitId = "ca-app-pub-8751185684350116/7858429185";
 		#elif UNITY_IPHONE
 		string adUnitId = "INSERT_IOS_BANNER_AD_UNIT_ID_HERE";
 		#else
@@ -125,7 +125,7 @@ public class GoogleMobileAdsDemoScript : MonoBehaviour
 	{
 		return new AdRequest.Builder()
 			.AddTestDevice(AdRequest.TestDeviceSimulator)
-				.AddTestDevice("0123456789ABCDEF0123456789ABCDEF")
+				.AddTestDevice("1EE6AD64B447282414A9A331C1B7D125")
 				.AddKeyword("game")
 				.SetGender(Gender.Male)
 				.SetBirthday(new DateTime(1985, 1, 1))

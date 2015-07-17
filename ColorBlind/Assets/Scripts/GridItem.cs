@@ -17,15 +17,31 @@ public class GridItem : MonoBehaviour {
 	private Color toColor;
 	private Color hintColor;
 
+	Animator animator;
+
+	public float invisibleTime = 0;
+
 	// Use this for initialization
 	void Start () {
 		manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>();
 		image = this.gameObject.GetComponent <Image>();
 		timer = MAX_HINT_TIMER;
 		hintColor = Color.white;
+
+		animator = GetComponent<Animator>();
+		this.gameObject.GetComponent<Image> ().enabled = false;
 	}
 
 	void Update(){
+
+		if (invisibleTime > 0) {
+			invisibleTime -= Time.deltaTime;
+			return;
+		}else{
+			animator.SetBool("visible", true);
+			this.gameObject.GetComponent<Image> ().enabled = true;
+		}
+
 		if(!image.color.Equals(manager.levelColor)){
 			timer -= Time.deltaTime;
 			if(timer <=0){
@@ -38,7 +54,8 @@ public class GridItem : MonoBehaviour {
 		}
 
 		if (showHint) {
-			this.ShowHint();
+//			this.ShowHint();
+			animator.SetBool("hintactive", true);
 		}
 	}
 

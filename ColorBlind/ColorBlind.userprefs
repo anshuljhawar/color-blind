@@ -1,0 +1,46 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI/AutoGridLayout.cs">
+    <Files>
+      <File FileName="Assets/Scripts/UI/AutoGridLayout.cs" Line="18" Column="10" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Scripts" expanded="True">
+              <Node name="UI" expanded="True">
+                <Node name="AutoGridLayout.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+          <Node name="Assembly-CSharp-Editor" expanded="True">
+            <Node name="Editor" expanded="True" />
+          </Node>
+          <Node name="Assembly-CSharp-Editor-firstpass" expanded="True">
+            <Node name="Plugins" expanded="True">
+              <Node name="Editor" expanded="True" />
+            </Node>
+          </Node>
+          <Node name="Assembly-UnityScript-Editor-firstpass" expanded="True">
+            <Node name="Plugins" expanded="True">
+              <Node name="Editor" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/anshul/workspace/color-blind/ColorBlind/Assets/Scripts/Manager.cs" line="126" />
+      <Breakpoint file="/Users/anshul/workspace/color-blind/ColorBlind/Assets/Scripts/ToggleGroupControl.cs" line="43" />
+      <Breakpoint file="/Users/anshul/workspace/color-blind/ColorBlind/Assets/Scripts/ToggleGroupControl.cs" line="44" />
+      <Breakpoint file="/Users/anshul/workspace/color-blind/ColorBlind/Assets/Scripts/MultiColorGridItem.cs" line="58" />
+      <Breakpoint file="/Users/anshul/workspace/color-blind/ColorBlind/Assets/Scripts/NetworkManager.cs" line="31" />
+      <Breakpoint file="/Users/anshul/workspace/color-blind/ColorBlind/Assets/Scripts/NetworkManager.cs" line="14" />
+      <Breakpoint file="/Users/anshul/workspace/color-blind/ColorBlind/Assets/Scripts/NetworkManager.cs" line="43" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

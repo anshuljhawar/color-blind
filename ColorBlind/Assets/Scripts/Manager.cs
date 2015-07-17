@@ -95,6 +95,9 @@ public class Manager : MonoBehaviour {
 			t.SetParent(this.gridLayoutGroup.transform);
 			t.localScale = Vector3.one;
 
+			GridItem gridItemScript = gridItem.GetComponent<GridItem>();
+			gridItemScript.invisibleTime = Random.Range(0f, 0.3f);
+
 			if(i == secondColorGridItemPosition)
 				gridItem.GetComponent<Image>().color = levelSecondColor;
 			else
@@ -136,6 +139,7 @@ public class Manager : MonoBehaviour {
 			break;
 		}
 	}
+
 	public void TimeUp(){
 		timeUpPanel.SetPanel(mainPanel.UpdateScore(score));
 		this.gameObject.SetActive (false);
